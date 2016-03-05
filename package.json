@@ -1,0 +1,53 @@
+{
+  "name": "kanblamb",
+  "version": "1.0.0",
+  "description": "kaban people use",
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/activedecay/kanblamb.git"
+  },
+  "keywords": [
+    "kanban"
+  ],
+  "author": "Justin Faust",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/activedecay/kanblamb/issues"
+  },
+  "homepage": "https://github.com/activedecay/kanblamb#README.md",
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "marked": "^0.3.5",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.0",
+    "react-redux": "^4.4.0",
+    "redux": "^3.3.1"
+  },
+  "devDependencies": {
+    "babelify": "~6.1.2",
+    "browser-sync": "^2.11.1",
+    "browserify": "^13.0.0",
+    "jade": "~1.11.0",
+    "redux-devtools": "^3.1.1",
+    "redux-devtools-dock-monitor": "^1.1.0",
+    "redux-devtools-log-monitor": "^1.0.5",
+    "require": "^2.4.20",
+    "watchify": "^3.3.1"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "scripts": {
+    "jade": "jade src/jade --out ./kanblamb --hierarchy --pretty",
+    "bundle": "browserify --extension=js src/js -o kanblamb/bundle.js",
+
+    "build": "npm run jade & npm run bundle",
+
+    "watch": "watchify src/js -o kanblamb/bundle.js",
+    "sync": "browser-sync start --server --files kanblamb --startPath kanblamb"
+  }
+}
