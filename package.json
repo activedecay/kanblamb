@@ -46,6 +46,7 @@
     "bundle": "browserify --extension=js src/js -o kanblamb/bundle.js",
 
     "build": "npm run jade & npm run bundle",
+    "dev": "npm run watch & npm run sync",
 
     "watch": "watchify src/js -o kanblamb/bundle.js",
     "sync": "browser-sync start --server --files kanblamb --startPath kanblamb"

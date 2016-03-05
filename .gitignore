@@ -4,3 +4,5 @@ node_modules
 /npm-debug.log
 /simplest-redux-example
 /express
+/kanblamb/bundle.js
+/kanblamb/index.html
