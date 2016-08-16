@@ -1,0 +1,13 @@
+[{
+    "uuid":0,
+    "name":"admin"
+},{
+    "uuid":1,
+    "name":"work"
+},{
+    "uuid":2,
+    "name":"comment"
+},{
+    "uuid":3,
+    "name":"read"
+}]

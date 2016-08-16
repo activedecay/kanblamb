@@ -80,9 +80,9 @@ https://facebook.github.io/react/docs/jsx-in-depth.html
 1. state is read-only
     1. use reducers and actions to modify
     1. actions express an intent to mutate
-1. reducers are pure functions
-    1. must return new state (don't mutate)
-    1. can manage subtree of state
+1. changes are made with are pure functions
+    1. must return new state object
+    1. reducers can manage subtree of state
     1. function reducer(state=default, action)
     1. use actions to pass any additional data
 

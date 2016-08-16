@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import {createStore} from 'redux'
 import {Provider, connect} from 'react-redux'
 import marked from 'marked'
+import fetch from 'isomorphic-fetch'
 import $ from 'jquery'
 import {Todos} from './todo'
 // import DevTools from './devtools'
@@ -79,17 +80,16 @@ var CommentBox = React.createClass({
     setInterval(this.loadComments, this.props.pollInterval)
   },
   loadComments: function () {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      cache: false,
-      success: function (json) {
+    fetch(this.props.url)
+      .then(function (response) {
+        return response.json()
+      })
+      .then(((json) => {
         this.setState({comments: json});
-      }.bind(this),
-      error: function (xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+      }).bind(this))
+      .catch((ex) => {
+        console.error('parse failed', ex);
+      })
   },
   handleCommentSubmit: function (comment) {
     /* Warning: Each child in an array or iterator should have a unique "key"
@@ -284,7 +284,6 @@ ReactDOM.render(
   </div>,
   document.getElementById('content')
 );
-
 
 ReactDOM.render(
   <div>

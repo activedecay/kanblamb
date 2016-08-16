@@ -4,26 +4,24 @@
   "description": "kaban people use",
   "main": "index.js",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/activedecay/kanblamb.git"
+  "scripts": {
+    "jade": "jade src/jade --out ./kanblamb --hierarchy --pretty",
+    "bundle": "browserify -d --extension=js src/js -o kanblamb/bundle.js",
+    "build": "npm run jade & npm run bundle",
+    "dev": "npm run watch & npm run sync",
+    "watch": "watchify -d --extension=js src/js -o kanblamb/bundle.js",
+    "sync": "browser-sync start --server --files kanblamb --startPath kanblamb"
   },
-  "keywords": [
-    "kanban"
-  ],
-  "author": "Justin Faust",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/activedecay/kanblamb/issues"
-  },
-  "homepage": "https://github.com/activedecay/kanblamb#README.md",
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "jquery": "^2.2.1",
     "marked": "^0.3.5",
     "react": "^0.14.7",
     "react-dom": "^0.14.0",
     "react-redux": "^4.4.0",
-    "redux": "^3.3.1"
+    "redux": "^3.3.1",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.0.1"
   },
   "devDependencies": {
     "babelify": "~6.1.2",
@@ -41,14 +39,17 @@
       "babelify"
     ]
   },
-  "scripts": {
-    "jade": "jade src/jade --out ./kanblamb --hierarchy --pretty",
-    "bundle": "browserify -d --extension=js src/js -o kanblamb/bundle.js",
-
-    "build": "npm run jade & npm run bundle",
-    "dev": "npm run watch & npm run sync",
-
-    "watch": "watchify -d --extension=js src/js -o kanblamb/bundle.js",
-    "sync": "browser-sync start --server --files kanblamb --startPath kanblamb"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/activedecay/kanblamb.git"
+  },
+  "keywords": [
+    "kanban"
+  ],
+  "author": "Justin Faust",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/activedecay/kanblamb/issues"
+  },
+  "homepage": "https://github.com/activedecay/kanblamb#README.md"
 }
